@@ -19,11 +19,19 @@ public class CreditAccountTest {
     }
 
     @Test
-    public void exeptionTest() {
+    public void exceptionTestLimitNegative() {
 
-        CreditAccount account = new CreditAccount(500, 55_000, -80);
+        CreditAccount account = new CreditAccount(500, -55_000, 80);
 
-        account.add(3_000);
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> account.getBalance());
+
+    }
+
+    @Test
+    public void exceptionTestBalanceNegative() {
+
+        CreditAccount account = new CreditAccount(-500, 55_000, 80);
 
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> account.getBalance());
