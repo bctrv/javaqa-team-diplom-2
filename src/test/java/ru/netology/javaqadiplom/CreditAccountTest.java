@@ -40,6 +40,15 @@ public class CreditAccountTest {
     }
 
     @Test
+    public void payTestOverBalance() {
+        CreditAccount account = new CreditAccount(500, 55_000, 10);
+
+        account.pay(600);
+
+        Assertions.assertEquals(500, account.getBalance());
+    }
+
+    @Test
     public void addTest() {
         CreditAccount account = new CreditAccount(500, 55_000, 10);
 
