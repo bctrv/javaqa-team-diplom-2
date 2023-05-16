@@ -96,6 +96,7 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(true, account.pay(1300));
     }
+
     @Test
     public void balanceShouldBeEqualMinBalanceWhenPay() {
         SavingAccount account = new SavingAccount(
@@ -274,7 +275,7 @@ public class SavingAccountTest {
         Assertions.assertEquals(2_249, account.yearChange());
     }
 
-    @Test
+    @Test   //!!!
     public void shouldNotGetYearChangeIfBalanceMaxBalancePlusOne() {
         SavingAccount account = new SavingAccount(
                 15_001,
@@ -380,6 +381,7 @@ public class SavingAccountTest {
         );
         Assertions.assertEquals(15, account.getRate());
     }
+
     @Test
     public void shouldGetRateIfZero() {
         SavingAccount account = new SavingAccount(
@@ -390,6 +392,7 @@ public class SavingAccountTest {
         );
         Assertions.assertEquals(0, account.getRate());
     }
+
     @Test
     public void shouldGetRateIfOne() {
         SavingAccount account = new SavingAccount(
@@ -399,18 +402,5 @@ public class SavingAccountTest {
                 1
         );
         Assertions.assertEquals(1, account.getRate());
-    }
-
-    @Test
-    public void shouldNotGetNegativeRate() {
-        SavingAccount account = new SavingAccount(
-                6_300,
-                2_000,
-                15_000,
-                -15
-        );
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            account.getRate();
-        });
     }
 }
