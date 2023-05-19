@@ -6,3 +6,4 @@ public class IllegalArgumentException extends RuntimeException {
         super (msg);
     }
 }
+
