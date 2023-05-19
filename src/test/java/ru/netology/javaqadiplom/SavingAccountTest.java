@@ -208,12 +208,12 @@ public class SavingAccountTest {
     @Test
     public void shouldGetYearChange() {
         SavingAccount account = new SavingAccount(
-                5_000,
-                2_000,
+                99,
+                10,
                 15_000,
-                10
+                75
         );
-        Assertions.assertEquals(500, account.yearChange());
+        Assertions.assertEquals(74, account.yearChange());
     }
 
     @Test
