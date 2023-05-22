@@ -403,4 +403,17 @@ public class SavingAccountTest {
         );
         Assertions.assertEquals(1, account.getRate());
     }
+
+    @Test
+    public void shouldNotChangeBalanceIfPayFalse() {
+        SavingAccount account = new SavingAccount(
+                3_000,
+                3_000,
+                10_000,
+                2
+        );
+        account.pay(500);
+
+        Assertions.assertEquals(3000, account.getBalance());
+    }
 }
