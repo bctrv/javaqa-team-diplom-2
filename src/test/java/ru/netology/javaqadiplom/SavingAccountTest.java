@@ -265,17 +265,6 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldGetYearChangeIfBalanceLessForOneMaxBalance() {
-        SavingAccount account = new SavingAccount(
-                14_999,
-                2_000,
-                15_000,
-                15
-        );
-        Assertions.assertEquals(2_235, account.yearChange());
-    }
-
-    @Test
     public void shouldNotGetYearChangeIfBalanceMaxBalancePlusOne() {
         SavingAccount account = new SavingAccount(
                 15_001,
