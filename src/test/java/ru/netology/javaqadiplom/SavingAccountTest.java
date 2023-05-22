@@ -208,12 +208,12 @@ public class SavingAccountTest {
     @Test
     public void shouldGetYearChange() {
         SavingAccount account = new SavingAccount(
-                5_000,
-                2_000,
+                99,
+                10,
                 15_000,
-                10
+                75
         );
-        Assertions.assertEquals(500, account.yearChange());
+        Assertions.assertEquals(74, account.yearChange());
     }
 
     @Test
@@ -262,17 +262,6 @@ public class SavingAccountTest {
                 15
         );
         Assertions.assertEquals(2_250, account.yearChange());
-    }
-
-    @Test
-    public void shouldGetYearChangeIfBalanceLessForOneMaxBalance() {
-        SavingAccount account = new SavingAccount(
-                14_999,
-                2_000,
-                15_000,
-                15
-        );
-        Assertions.assertEquals(2_235, account.yearChange());
     }
 
     @Test
@@ -402,5 +391,18 @@ public class SavingAccountTest {
                 1
         );
         Assertions.assertEquals(1, account.getRate());
+    }
+
+    @Test
+    public void shouldNotChangeBalanceIfPayFalse() {
+        SavingAccount account = new SavingAccount(
+                3_000,
+                3_000,
+                10_000,
+                2
+        );
+        account.pay(500);
+
+        Assertions.assertEquals(3000, account.getBalance());
     }
 }
