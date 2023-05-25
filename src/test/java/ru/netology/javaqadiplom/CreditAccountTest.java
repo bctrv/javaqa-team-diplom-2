@@ -99,7 +99,7 @@ public class CreditAccountTest {
         CreditAccount account = new CreditAccount(-51, 55_000, 15);
 
 
-        Assertions.assertEquals(7, account.yearChange());
+        Assertions.assertEquals(-7, account.yearChange());
     }
 
 }
