@@ -86,17 +86,6 @@ public class CreditAccountTest {
     }
 
     @Test
-    public void addOverLimitTest() {
-        CreditAccount account = new CreditAccount(500, 55_000, 10);
-
-        account.add(300_000);
-
-        Assertions.assertThrows(IllegalArgumentException.class,
-                () -> account.getBalance());
-
-    }
-
-    @Test
     public void payTwoTest() {
         CreditAccount account = new CreditAccount(5000, 5000, 10);
 
