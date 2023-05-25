@@ -74,4 +74,43 @@ public class CreditAccountTest {
         Assertions.assertEquals(0, account.yearChange());
 
     }
+
+    @Test
+    public void balanceOverLimitTest() {
+        CreditAccount account = new CreditAccount(200_000, 55_000, 15);
+
+        account.pay(600);
+
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> account.getBalance());
+    }
+
+    @Test
+    public void addOverLimitTest() {
+        CreditAccount account = new CreditAccount(500, 55_000, 10);
+
+        account.add(300_000);
+
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> account.getBalance());
+
+    }
+
+    @Test
+    public void payTwoTest() {
+        CreditAccount account = new CreditAccount(5000, 5000, 10);
+
+        account.pay(-300);
+
+        Assertions.assertEquals(5000, account.getBalance());
+    }
+
+    @Test
+    public void percTestTwo() {
+        CreditAccount account = new CreditAccount(51, 55_000, 15);
+
+
+        Assertions.assertEquals(7, account.yearChange());
+    }
+
 }
