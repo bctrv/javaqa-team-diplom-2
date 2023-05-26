@@ -38,6 +38,11 @@ public class CreditAccount extends Account {
                     "Баланс не может быть отрицательным, а у вас: " + creditLimit
             );
         }
+        if (balance > creditLimit) {
+            throw new IllegalArgumentException(
+                    "Баланс не может быть больше кредитного лимита, а у вас: баланс " + balance + "кредитнй лимит: " + creditLimit
+            );
+        }
         return balance;
     }
 
@@ -75,13 +80,16 @@ public class CreditAccount extends Account {
      */
     @Override
     public boolean pay(int amount) {
-        if (amount > balance) {
+        if (amount <= 0) {
             return false;
         }
-        balance = balance - amount;
-        if (balance < 0) {
+        if (balance <= 0) {
+            return false;
+        }
+        if (balance - amount < 0) {
             return false;
         } else {
+            balance = balance - amount;
             return true;
         }
 
@@ -122,7 +130,7 @@ public class CreditAccount extends Account {
         if (balance > 0) {
             return 0;
         } else {
-            return balance / 100 * rate;
+            return balance * rate / 100;
         }
     }
 
